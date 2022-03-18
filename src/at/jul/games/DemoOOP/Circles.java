@@ -4,7 +4,7 @@ import org.newdawn.slick.Graphics;
 
 import java.util.Random;
 
-public class Circles {
+public class Circles implements Actor {
     private enum DIRECTION{RIGHT,LEFT,UP,DOWN};
     private float x,y;
     private float diameter;
@@ -18,12 +18,12 @@ public class Circles {
         this.speed = random.nextInt(50)+10;
     }
     public void render(Graphics graphics){
-        graphics.drawOval(this.x,this.y,10,10);
+        graphics.drawOval(this.x,this.y,this.diameter,this.diameter);
     }
     public void update(int delta){
-        this.x -= (float) delta/this.speed;
-        if(this.x - this.diameter <= 0){
-            this.x = 800;
+        this.y += (float) delta/this.speed;
+        if(this.y + this.diameter >= 600){
+            this.y = 0;
         }
     }
 }
