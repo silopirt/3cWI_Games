@@ -19,7 +19,7 @@ public class IntroduceObjects extends BasicGame {
 
 
         for (int i = 0; i < 10; i++){
-            Rectangles rectangle = new Rectangles(Rectangles.DIRECTION.LEFT);
+            Rectangles rectangle = new Rectangles(Rectangles.DIRECTION.UP);
             this.actors.add(rectangle);
         }
         for (int i = 0; i < 10; i++) {

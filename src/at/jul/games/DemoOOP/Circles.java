@@ -25,5 +25,6 @@ public class Circles implements Actor {
         if(this.y + this.diameter >= 600){
             this.y = 0;
         }
+        this.diameter +=(float) delta/100;
     }
 }

@@ -33,13 +33,18 @@ public class Rectangles implements Actor{
             }
         }else if(this.direction == DIRECTION.LEFT){
             this.x -= (float) delta / this.speed;
-            if (this.x - 10 <= 0) {
+            if (this.x <= 0) {
                 this.x = 800;
             }
         }else if(this.direction == DIRECTION.DOWN){
             this.y += (float) delta / this.speed;
             if (this.y + 10 >= 600) {
                 this.y = 0;
+            }
+        }else if(this.direction == DIRECTION.UP){
+            this.y -= (float) delta / this.speed;
+            if (this.y<= 0) {
+                this.y = 600;
             }
         }
     }
