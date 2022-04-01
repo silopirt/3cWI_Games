@@ -13,7 +13,7 @@ public class Snowflake implements Actor{
     public Snowflake() {
         Random random = new Random();
         this.x = random.nextInt(800);
-        this.y = random.nextInt(200)-400;
+        this.y = random.nextInt(600)-1000;
         this.diameter = random.nextInt(10)+3;
         if(this.diameter<=6){
             this.speed = 10;
