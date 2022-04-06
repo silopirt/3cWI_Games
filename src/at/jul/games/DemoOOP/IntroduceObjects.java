@@ -17,6 +17,8 @@ public class IntroduceObjects extends BasicGame {
     public void init(GameContainer gameContainer) throws SlickException {
         this.actors = new ArrayList<>();
 
+        Manuel manuel = new Manuel();
+        this.actors.add(manuel);
 
         for (int i = 0; i < 10; i++){
             Rectangles rectangle = new Rectangles(Rectangles.DIRECTION.UP);
