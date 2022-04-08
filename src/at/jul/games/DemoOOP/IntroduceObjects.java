@@ -8,6 +8,8 @@ import java.util.Random;
 
 public class IntroduceObjects extends BasicGame {
     private List<Actor> actors;
+    private List<DeletableActor> bullets;
+    private Manuel manuel;
 
     public IntroduceObjects(String title) {
         super(title);
@@ -16,10 +18,13 @@ public class IntroduceObjects extends BasicGame {
     @Override
     public void init(GameContainer gameContainer) throws SlickException {
         this.actors = new ArrayList<>();
+        this.bullets = new ArrayList<>();
 
         Manuel manuel = new Manuel();
+        this.manuel = manuel;
         this.actors.add(manuel);
 
+        /*
         for (int i = 0; i < 10; i++){
             Rectangles rectangle = new Rectangles(Rectangles.DIRECTION.UP);
             this.actors.add(rectangle);
@@ -32,13 +37,25 @@ public class IntroduceObjects extends BasicGame {
             Ellipse ellipse = new Ellipse();
             this.actors.add(ellipse);
         }
+        */
     }
 
     @Override
     public void update(GameContainer gameContainer, int delta) throws SlickException {
+
         for (Actor actor:this.actors) {
-            actor.update(delta);
+            actor.update(gameContainer, delta);
+
         }
+
+        /*
+        for (DeletableActor actor :this.bullets             ) {
+            if (actor.isDeleteable()){
+                this.actors.remove(actor);
+            }
+        }
+        */
+
     }
 
 
@@ -46,6 +63,15 @@ public class IntroduceObjects extends BasicGame {
     public void render(GameContainer gameContainer, Graphics graphics) throws SlickException {
         for (Actor actor:this.actors) {
             actor.render(graphics);
+        }
+    }
+
+    @Override
+    public void keyPressed(int key, char c) {
+        if(key == Input.KEY_SPACE){
+            Circles circle = new Circles(manuel.getX(), manuel.getY());
+            actors.add(circle);
+            bullets.add(circle);
         }
     }
 
