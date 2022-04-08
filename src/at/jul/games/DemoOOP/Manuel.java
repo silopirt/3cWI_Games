@@ -6,7 +6,6 @@ import org.newdawn.slick.SlickException;
 
 public class Manuel implements Actor{
     private Image manuelImage;
-
     public Manuel() throws SlickException {
         this.manuelImage = new Image("testdata/manuel.png");
     }
