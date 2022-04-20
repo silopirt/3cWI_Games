@@ -1,10 +1,10 @@
-package at.jul.games.DemoOOP;
+package at.jul.games.DemoOOP_;
 
 import org.newdawn.slick.*;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
-import java.util.Random;
 
 public class IntroduceObjects extends BasicGame {
     private List<Actor> actors;
@@ -24,20 +24,15 @@ public class IntroduceObjects extends BasicGame {
         this.manuel = manuel;
         this.actors.add(manuel);
 
-        /*
         for (int i = 0; i < 10; i++){
             Rectangles rectangle = new Rectangles(Rectangles.DIRECTION.UP);
             this.actors.add(rectangle);
         }
         for (int i = 0; i < 10; i++) {
-            Circles circle = new Circles();
-            this.actors.add(circle);
-        }
-        for (int i = 0; i < 10; i++) {
             Ellipse ellipse = new Ellipse();
             this.actors.add(ellipse);
         }
-        */
+
     }
 
     @Override
@@ -45,16 +40,19 @@ public class IntroduceObjects extends BasicGame {
 
         for (Actor actor:this.actors) {
             actor.update(gameContainer, delta);
-
+        }
+        for (Actor actor:this.bullets) {
+            actor.update(gameContainer, delta);
         }
 
-        /*
-        for (DeletableActor actor :this.bullets             ) {
+        Iterator<DeletableActor> delActors = this.bullets.iterator();
+        while(delActors.hasNext()){
+            DeletableActor actor = delActors.next();
             if (actor.isDeleteable()){
-                this.actors.remove(actor);
+                delActors.remove();
             }
         }
-        */
+
 
     }
 
@@ -64,20 +62,23 @@ public class IntroduceObjects extends BasicGame {
         for (Actor actor:this.actors) {
             actor.render(graphics);
         }
+        for (Actor actor:this.bullets) {
+            actor.render(graphics);
+        }
     }
 
     @Override
     public void keyPressed(int key, char c) {
         if(key == Input.KEY_SPACE){
             Circles circle = new Circles(manuel.getX(), manuel.getY());
-            actors.add(circle);
+
             bullets.add(circle);
         }
     }
 
     public static void main(String[] argv) {
         try {
-            AppGameContainer container = new AppGameContainer(new at.jul.games.DemoOOP.IntroduceObjects("OOP"));
+            AppGameContainer container = new AppGameContainer(new at.jul.games.DemoOOP_.IntroduceObjects("OOP"));
             container.setDisplayMode(800,600,false);
             container.start();
         } catch (SlickException e) {

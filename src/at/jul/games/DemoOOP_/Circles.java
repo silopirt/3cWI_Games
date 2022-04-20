@@ -1,12 +1,10 @@
-package at.jul.games.DemoOOP;
+package at.jul.games.DemoOOP_;
 
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 
 public class Circles implements DeletableActor {
 
-
-    private enum DIRECTION{RIGHT,LEFT,UP,DOWN};
     private float x,y;
     private float diameter;
     private float speed;

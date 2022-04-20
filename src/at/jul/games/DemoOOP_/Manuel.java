@@ -1,4 +1,4 @@
-package at.jul.games.DemoOOP;
+package at.jul.games.DemoOOP_;
 
 import org.newdawn.slick.*;
 
