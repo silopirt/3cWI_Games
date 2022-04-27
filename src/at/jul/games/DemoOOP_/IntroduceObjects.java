@@ -24,13 +24,14 @@ public class IntroduceObjects extends BasicGame {
         this.manuel = manuel;
         this.actors.add(manuel);
 
-        for (int i = 0; i < 10; i++){
-            Rectangles rectangle = new Rectangles(Rectangles.DIRECTION.UP);
-            this.actors.add(rectangle);
-        }
+        //for (int i = 0; i < 10; i++){
+        //   Rectangles rectangle = new Rectangles(Rectangles.DIRECTION.UP);
+        //    this.actors.add(rectangle);
+        //}
         for (int i = 0; i < 10; i++) {
             Ellipse ellipse = new Ellipse();
             this.actors.add(ellipse);
+            this.manuel.addEllipses(ellipse);
         }
 
     }
@@ -52,8 +53,6 @@ public class IntroduceObjects extends BasicGame {
                 delActors.remove();
             }
         }
-
-
     }
 
 
