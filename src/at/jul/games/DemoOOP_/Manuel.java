@@ -11,7 +11,7 @@ public class Manuel implements Actor{
     private Image manuelImage;
     private float x,y,width,height;
     private Shape collisionShape;
-    private List<Ellipse> ellipses;
+    private List<CollisionShape> collisionShapes;
 
     public float getX() {
         return x;
@@ -28,7 +28,7 @@ public class Manuel implements Actor{
         this.width = 50;
         this.height = 50;
         this.collisionShape = new Rectangle(this.x,this.y,this.width,this.height);
-        this.ellipses = new ArrayList<Ellipse>();
+        this.collisionShapes = new ArrayList<CollisionShape>();
     }
 
     @Override
@@ -39,22 +39,9 @@ public class Manuel implements Actor{
 
     @Override
     public void update(GameContainer gameContainer, int delta) {
-        for (Ellipse ellipse :ellipses) {
-            if(this.collisionShape.intersects(ellipse.getCollisionShape())){
-                switch (ellipse.getDirection()){
-                    case RIGHT:
-                        ellipse.setDirection(Ellipse.DIRECTION.LEFT);
-                        break;
-                    case LEFT:
-                        ellipse.setDirection(Ellipse.DIRECTION.RIGHT);
-                        break;
-                    case UP:
-                        ellipse.setDirection(Ellipse.DIRECTION.DOWN);
-                        break;
-                    case DOWN:
-                        ellipse.setDirection(Ellipse.DIRECTION.UP);
-                        break;
-                }
+        for (CollisionShape ellipse : collisionShapes) {
+            if(this.collisionShape.intersects(ellipse.getShape())){
+
             }
         }
 
@@ -85,10 +72,6 @@ public class Manuel implements Actor{
     }
 
     public void addEllipses(Ellipse ellipse){
-        this.ellipses.add(ellipse);
-    }
-
-    public List<Ellipse> getEllipses() {
-        return ellipses;
+        this.collisionShapes.add(ellipse);
     }
 }

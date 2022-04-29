@@ -8,7 +8,7 @@ import java.util.List;
 
 public class IntroduceObjects extends BasicGame {
     private List<Actor> actors;
-    private List<DeletableActor> bullets;
+    private List<Actor> bullets;
     private Manuel manuel;
 
     public IntroduceObjects(String title) {
@@ -46,13 +46,6 @@ public class IntroduceObjects extends BasicGame {
             actor.update(gameContainer, delta);
         }
 
-        Iterator<DeletableActor> delActors = this.bullets.iterator();
-        while(delActors.hasNext()){
-            DeletableActor actor = delActors.next();
-            if (actor.isDeleteable()){
-                delActors.remove();
-            }
-        }
     }
 
 
@@ -63,15 +56,6 @@ public class IntroduceObjects extends BasicGame {
         }
         for (Actor actor:this.bullets) {
             actor.render(graphics);
-        }
-    }
-
-    @Override
-    public void keyPressed(int key, char c) {
-        if(key == Input.KEY_SPACE){
-            Circles circle = new Circles(manuel.getX(), manuel.getY());
-
-            bullets.add(circle);
         }
     }
 
