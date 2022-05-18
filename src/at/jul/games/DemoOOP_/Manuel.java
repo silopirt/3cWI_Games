@@ -41,7 +41,7 @@ public class Manuel implements Actor{
     public void update(GameContainer gameContainer, int delta) {
         for (CollisionShape ellipse : collisionShapes) {
             if(this.collisionShape.intersects(ellipse.getShape())){
-
+                System.out.println("col");
             }
         }
 
