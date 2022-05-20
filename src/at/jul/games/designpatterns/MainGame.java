@@ -18,8 +18,14 @@ public class MainGame extends BasicGame {
         this.actors = new ArrayList<>();
         for (int i = 0; i < 5; i++) {
             Random random = new Random();
-            Circle circle = new Circle();
+            MoveRight mr = new MoveRight(random.nextInt(500)+50,random.nextInt(500)+50,random.nextInt(10)+3);
+
+            Circle circle = new Circle(mr);
             this.actors.add(circle);
+        }
+        for (int i = 0; i < 10; i++) {
+            Rectangle rectangle = new Rectangle();
+            this.actors.add(rectangle);
         }
     }
 

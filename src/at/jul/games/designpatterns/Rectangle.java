@@ -5,24 +5,25 @@ import org.newdawn.slick.Graphics;
 
 import java.util.Random;
 
-public class Circle implements Actor{
-    private MoveRight mr;
-    private float height;
+public class Rectangle implements Actor{
+    private float x,y,width,height;
 
-    public Circle(MoveRight mr) {
+    public Rectangle() {
         Random random = new Random();
-        this.mr = mr;
-        this.height = random.nextInt(10)+5;
+
+        this.x = random.nextInt(400)+10;
+        this.y = random.nextInt(400)+10;
+        this.width = random.nextInt(50)+20;
+        this.height = random.nextInt(50)+30;
     }
 
     @Override
     public void update(GameContainer gameContainer, int delta) {
-        mr.update(delta);
+
     }
 
     @Override
     public void render(GameContainer gameContainer, Graphics graphics) {
-        Random random = new Random();
-        graphics.drawOval(this.mr.getX(),this.mr.getY(),this.height,this.height);
+        graphics.drawRect(this.x,this.y,this.width,this.height);
     }
 }
