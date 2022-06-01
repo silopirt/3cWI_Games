@@ -1,5 +1,7 @@
 package at.jul.games.designpatterns;
 
+import at.jul.games.designpatterns.interfaces.Actor;
+import at.jul.games.designpatterns.interfaces.Movement;
 import org.newdawn.slick.*;
 
 import java.util.ArrayList;
@@ -16,18 +18,22 @@ public class MainGame extends BasicGame {
     @Override
     public void init(GameContainer gameContainer) throws SlickException {
         this.actors = new ArrayList<>();
-        for (int i = 0; i < 5; i++) {
-            Random random = new Random();
-            MoveRight mr = new MoveRight(random.nextInt(500)+50,random.nextInt(500)+50,random.nextInt(10)+3);
+        Random random = new Random();
+
+        Player player = new Player();
+        this.actors.add(player);
+        for (int i = 0; i < 2; i++) {
+            Movement mr = new MoveRight(random.nextInt(500)+50,random.nextInt(500)+50,random.nextInt(10)+3);
+            Movement ml = new MoveLeft(random.nextInt(500)+50, random.nextInt(400)+50,random.nextInt(10)+3);
 
             Circle circle = new Circle(mr);
+            Rectangle rectangle = new Rectangle(ml);
+
+            this.actors.add(rectangle);
             this.actors.add(circle);
         }
-        for (int i = 0; i < 10; i++) {
-            Rectangle rectangle = new Rectangle();
-            this.actors.add(rectangle);
-        }
     }
+
 
     @Override
     public void update(GameContainer gameContainer, int delta) throws SlickException {

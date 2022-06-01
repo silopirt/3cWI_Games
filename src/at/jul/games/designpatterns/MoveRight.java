@@ -1,6 +1,8 @@
 package at.jul.games.designpatterns;
 
-public class MoveRight {
+import at.jul.games.designpatterns.interfaces.Movement;
+
+public class MoveRight implements at.jul.games.designpatterns.interfaces.Movement {
     private float x,y;
     private float speed;
 

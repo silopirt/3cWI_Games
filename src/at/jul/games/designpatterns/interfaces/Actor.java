@@ -1,4 +1,4 @@
-package at.jul.games.designpatterns;
+package at.jul.games.designpatterns.interfaces;
 
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
